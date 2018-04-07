@@ -1,0 +1,23 @@
+{
+  "name": "kharisma",
+  "version": "1.0.0",
+  "description": "A personality to DnD character creator",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fullmetalcloud/Kharisma.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fullmetalcloud/Kharisma/issues"
+  },
+  "homepage": "https://github.com/fullmetalcloud/Kharisma#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongoose": "^5.0.13"
+  }
+}
