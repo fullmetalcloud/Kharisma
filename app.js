@@ -7,12 +7,10 @@ const parseurl = require('parseurl');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
-//const Signature = require('./models/signature.js');
 const app = express();
 const router = express.Router();
-const MongoClient = require('mongodb').MongoClient;
-const Schema = mongoose.Schema;
-const uri = "mongodb://admin:hihihi@kharismacluster-shard-00-00-vocgi.mongodb.net:27017,kharismacluster-shard-00-01-vocgi.mongodb.net:27017,kharismacluster-shard-00-02-vocgi.mongodb.net:27017/test?ssl=true&replicaSet=KharismaCluster-shard-0&authSource=admin";
+const Classes = require('./models/model');
+const uri = "mongodb://admin:hihihi@kharismacluster-shard-00-00-vocgi.mongodb.net:27017,kharismacluster-shard-00-01-vocgi.mongodb.net:27017,kharismacluster-shard-00-02-vocgi.mongodb.net:27017/Classes?ssl=true&replicaSet=KharismaCluster-shard-0&authSource=admin";
 //=========================//
 
 //app.set("view engine", "ejs");
@@ -31,18 +29,20 @@ router.post('/api', (req, res) => {
 		"wis": req.body.Wis,
 		"cha": req.body.Cha
 	};*/
-	/*MongoClient.connect(uri, function(err, db) {
 
-		db.close();
-	});*/
+	//open the connection to the database
+	mongoose.Promise = global.Promise;
 	mongoose.connect(uri);
 	let db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
 	db.once('open', function() {
-	  // we're connected!!
+	  	// we're connected!!
+	  	// find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields
+		Classes.find({}, (err, classes) => {
+
+			res.json(classes);
+		});
 	});
-	console.log("used the post route");
-	res.json("we are at the post route");
 });
 
 app.use('/', router);
