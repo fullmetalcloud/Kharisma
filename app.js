@@ -13,13 +13,6 @@ const Classes = require('./models/model');
 const uri = "mongodb://admin:hihihi@kharismacluster-shard-00-00-vocgi.mongodb.net:27017,kharismacluster-shard-00-01-vocgi.mongodb.net:27017,kharismacluster-shard-00-02-vocgi.mongodb.net:27017/Classes?ssl=true&replicaSet=KharismaCluster-shard-0&authSource=admin";
 //=========================//
 
-//app.set("view engine", "ejs");
-
-router.get('/', (req, res) => {
-	console.log("we at the hompage bro");
-	res.send("hello world");
-});
-
 router.post('/api', (req, res) => {
 	/*let attributes = {
 		"str": req.body.Str,
@@ -46,7 +39,9 @@ router.post('/api', (req, res) => {
 });
 
 app.use('/', router);
+// Priority serve any static files.
+app.use(express.static(path.resolve(__dirname, '../Kharisma-Client/client/public')));
 
-app.listen(3000, function(){
+app.listen(3001, function(){
    console.log("Server is listening!!!"); 
 });
