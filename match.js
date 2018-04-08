@@ -8,16 +8,19 @@ var f = function determinecharacters(values, classes) {
 	// find two highest attributes
 	for (key in values) {
 		value = values[key];
-		if (value > primaryVal) {
+		if (value > parseInt(primaryVal)) {
 			secondary = primary;
 			secondaryVal = primaryVal;
 			primary = key;
 			primaryVal = value;
 		}
-		else if (value > secondary) {
+		else if (value > parseInt(secondaryVal)) {
 			secondary = key;
 			secondaryVal = value;
 		}
+		console.log("Key, value: ", key, value);
+		console.log(primaryVal, primary);
+		console.log(secondaryVal, secondary);
 	}
 	for (let i in classes) {
 		dndclass = classes[i];

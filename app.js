@@ -24,7 +24,6 @@ app.use(function(req, res, next) {
 });
 
 router.post('/api', (req, res) => {
-	console.log(req);
 	let attributes = {
 		"Str": req.body.Str,
 		"Dex": req.body.Dex,
