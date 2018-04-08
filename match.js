@@ -18,9 +18,6 @@ var f = function determinecharacters(values, classes) {
 			secondary = key;
 			secondaryVal = value;
 		}
-		console.log("Key, value: ", key, value);
-		console.log(primaryVal, primary);
-		console.log(secondaryVal, secondary);
 	}
 	for (let i in classes) {
 		dndclass = classes[i];

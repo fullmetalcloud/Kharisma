@@ -41,7 +41,6 @@ router.post('/api', (req, res) => {
 	db.on('error', console.error.bind(console, 'connection error:'));
 	db.once('open', function() {
 	  	// we're connected!!
-	  	// find each person with a last name matching 'Ghost', selecting the `name` and `occupation` fields
 		Classes.find({}, (err, classes) => {
 			var results = match.determinecharacters(attributes, classes);
 			console.log(results);
@@ -51,8 +50,6 @@ router.post('/api', (req, res) => {
 });
 
 app.use('/', router);
-// Priority serve any static files.
-app.use(express.static(path.resolve(__dirname, '../Kharisma-Client/client/public')));
 
 app.listen(3001, function(){
    console.log("Server is listening!!!"); 
